@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link rel="icon" type="image/x-icon" href="img/icons8-favicon-94.png">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLAzYvC2zTeqnkANjFwHkKfQN/UXRi50LFvFROvNQOzcw=" crossorigin="" />
+
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""   />
+
+</head>
+
+<body>
+    <ul class="nav justify-content-end" id="nav">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#Home">HOME</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#Search">SEARCH</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#current">CURRNENT</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#Forecast">FUTURE</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#Forecastpast">PAST</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#weather-map">MAP</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#Foot">FOOT</a>
+        </li>
+
+    </ul>
+    <section id="Home">
+        <div class="Headtxt">
+            <h1 class="text-center" id="homeh1"><b>Stay ahead of the weather </b>
+            </h1>
+        </div>
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="img/pic01.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/pic02.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/pic03.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/pic04.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/pic05.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/pic06.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/pic07.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/pic08.jpg" class="d-block w-100" alt="...">
+                </div>
+            </div>
+        </div>
+        <br>
+    </section>
+    <section id="Search">
+        <h1 class="title"><b>Weather</b> Forecast</h1>
+
+        <div class="user-interface">
+            <input type="text" id="location-input" placeholder="Enter location">
+            <button id="search-button">Search</button>
+
+        </div>
+    </section>
+    <br><br>
+    <section id="current">
+        <h1 class="heders">Current Weather</h1>
+        <div class="weather-card">
+            <div class="weather-icon">
+                <img class="weatherIcon1" id="weatherIcon" alt="Weather Icon" src="img/icons8-cloud-lightning-96.png" />
+            </div>
+            <div class="weather-info">
+                <h3 class="location name" id="location">Panadura</h3>
+                <p id="temperature temp_c">25°C</p>
+                <p id="description url">Cloudy</p>
+            </div>
+            <div class="timeLbl" id="local-time"></div>
+        </div>
+        <div class="card-group">
+
+            <div class="card">
+                <img src="img/s01.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Location</h5>
+                    <p class="card-text">Spatial position on Earth.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-body-secondary"><b><span id="tz_id">Asia/colombo</span><br><span
+                                id="region">Western</span><br><span id="country">Sri-Lanka</span></b></small>
+                </div>
+            </div>
+            <div class="card">
+                <img src="img/s03.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Temperature C</h5>
+                    <p class="card-text"> Measure of heat or cold in the atmosphere or a specific location.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-body-secondary"><br><b><span id="temp_c">25</span>C</b><br></small>
+                </div>
+            </div>
+            <div class="card">
+                <img src="img/s02.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Humidity</h5>
+                    <p class="card-text">Amount of moisture present in the air, indicating its relative dampness.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-body-secondary"><br><b><span id="humidity">33</span>HA<br></b></small>
+                </div>
+            </div>
+            <div class="card">
+                <img src="img/s04.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Wind</h5>
+                    <p class="card-text">Movement of air molecules in the Earth's atmosphere, often characterized by its
+                        direction, speed, and force.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-body-secondary"><br><b><span id="wind_kph">75.22</span>km/h<br></b></small>
+                </div>
+            </div>
+            <div class="card">
+                <img src="img/s05.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Weather Stats</h5>
+                    <p class="card-text">Statistical data describing atmospheric conditions such as temperature,
+                        humidity, wind speed, and precipitation.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-body-secondary"><br><b><span id="condition">Cloudy</span><br></b></small>
+                </div>
+            </div>
+            <div class="card">
+                <img src="img/s06.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Longitude & Latitude</h5>
+                    <p class="card-text">Geographic coordinates used to pinpoint a location's east-west (longitude) and
+                        north-south (latitude) position on Earth's surface.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-body-secondary"><b>Longitude: <span id="lon">11.33</span><br>Latitude: <span
+                                id="lat">20.55</span></b><br></small>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+    <br><br>
+    <section id="Forecast">
+        <h1 class="heders">Future Weather Forecast </h1>
+        <br>
+        <div class="card-group">
+            <div class="card">
+                <img id="img1" class="img" src="img/icons8-cloud-96.png" alt="">
+                <div class="card-body">
+                    <p class="card-text"><strong id="date1">2024-02-20</strong></p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-body-secondary"><strong id="title1">cloud</strong><br><strong
+                            id="c1">Temprature</strong> </b></small>
+                </div>
+            </div>
+            <div class="card">
+                <img id="img2" class="img" src="img/icons8-cloud-lightning-96.png" alt="">
+                <div class="card-body">
+                    <p class="card-text"><strong id="date2">2024-02-21</strong></p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-body-secondary"><strong id="title2">cloud-lightning</strong> <br><strong
+                            id="c2">Temprature</strong> </b></small>
+                </div>
+            </div>
+            <div class="card">
+                <img id="img3" class="img" src="img/icons8-partly-cloudy-day-96.png" alt="">
+                <div class="card-body">
+                    <p class="card-text"><strong id="date3">2024-02-22</strong></p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-body-secondary"><strong id="title3">partly-cloudy</strong><br><strong
+                            id="c3">Temprature</strong> </b></small>
+                </div>
+            </div>
+            <div class="card">
+                <img id="img4" class="img" src="img/icons8-night-wind-96.png" alt="">
+                <div class="card-body">
+                    <p class="card-text"><strong id="date4">2024-02-23</strong></p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-body-secondary"><strong id="title4">night-wind</strong><br><strong
+                            id="c4">Temprature</strong> </b></small>
+                </div>
+            </div>
+            <div class="card">
+                <img id="img5" class="img" src="img/icons8-storm-94.png" alt="">
+                <div class="card-body">
+                    <p class="card-text"><strong id="date5">2024-02-24</strong></p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-body-secondary"><strong id="title5">storm</strong><br><strong
+                            id="c5">Temprature</strong> </b></small>
+                </div>
+            </div>
+            <div class="card">
+                <img id="img6" class="img" src="img/icons8-cloud-lightning-96.png" alt="">
+                <div class="card-body">
+                    <p class="card-text"><strong id="date6">2024-02-25</strong></p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-body-secondary"><strong id="title6">cloud-lightning</strong> <br><strong
+                            id="c6">Temprature</strong> </b></small>
+                </div>
+            </div>
+            <div class="card">
+                <img id="img7" class="img" src="img/icons8-night-wind-96.png" alt="">
+                <div class="card-body">
+                    <p class="card-text"><strong id="date7">2025-02-26</strong></p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-body-secondary"><strong id="title7">night-wind</strong> <br><strong
+                            id="c7">Temprature</strong> </b></small>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+    <br><br>
+    
+    <section id="Forecastpast">
+        <h1 class="heders">PAST Weather Forecast </h1>
+        <br>
+        <div class="card-group">
+            <div class="card">
+                <img id="i1" class="img" src="img/icons8-cloud-96.png" alt="">
+                <div class="card-body">
+                    <p class="card-text"><strong id="d1">2024-02-19</strong></p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-body-secondary"><strong id="e1">cloud</strong><br><strong
+                            id="t1">Temprature</strong> </b></small>
+                </div>
+            </div>
+            <div class="card">
+                <img id="i2" class="img" src="img/icons8-cloud-lightning-96.png" alt="">
+                <div class="card-body">
+                    <p class="card-text"><strong id="d2">2024-02-18</strong></p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-body-secondary"><strong id="e2">cloud-lightning</strong> <br><strong
+                            id="t2">Temprature</strong> </b></small>
+                </div>
+            </div>
+            <div class="card">
+                <img id="i3" class="img" src="img/icons8-partly-cloudy-day-96.png" alt="">
+                <div class="card-body">
+                    <p class="card-text"><strong id="d3">2024-02-17</strong></p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-body-secondary"><strong id="e3">partly-cloudy</strong><br><strong
+                            id="t3">Temprature</strong> </b></small>
+                </div>
+            </div>
+            <div class="card">
+                <img id="i4" class="img" src="img/icons8-night-wind-96.png" alt="">
+                <div class="card-body">
+                    <p class="card-text"><strong id="d4">2024-02-16</strong></p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-body-secondary"><strong id="e4">night-wind</strong><br><strong
+                            id="t4">Temprature</strong> </b></small>
+                </div>
+            </div>
+            <div class="card">
+                <img id="i5" class="img" src="img/icons8-storm-94.png" alt="">
+                <div class="card-body">
+                    <p class="card-text"><strong id="d5">2024-02-15</strong></p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-body-secondary"><strong id="e5">storm</strong><br><strong
+                            id="t5">Temprature</strong> </b></small>
+                </div>
+            </div>
+            <div class="card">
+                <img id="i6" class="img" src="img/icons8-cloud-lightning-96.png" alt="">
+                <div class="card-body">
+                    <p class="card-text"><strong id="d6">2024-02-14</strong></p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-body-secondary"><strong id="e6">cloud-lightning</strong> <br><strong
+                            id="t6">Temprature</strong> </b></small>
+                </div>
+            </div>
+            <div class="card">
+                <img id="i7" class="img" src="img/icons8-night-wind-96.png" alt="">
+                <div class="card-body">
+                    <p class="card-text"><strong id="d7">2025-02-13</strong></p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-body-secondary"><strong id="e7">night-wind</strong> <br><strong
+                            id="t7">Temprature</strong> </b></small>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+    <br><br>
+    <section id="weather-map">
+        <h1 class="heders">Map</h1>
+        <center>
+            <div id="map" class="map-d" style="height: 430px;width: 1000px;">
+        </center>
+        sad
+        </div>
+    </section>
+    <br><br>
+    
+    <br><br>
+    <section id="Foot">
+        <img src="img/earth.jpg" class="img-fluid" alt="...">
+
+    </section>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
